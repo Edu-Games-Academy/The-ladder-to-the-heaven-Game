@@ -1,121 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Game Tính lãi suất</title>
-
-    <link rel="stylesheet" href="lib/bootstrap.min.css"/>
-
-    <link rel="stylesheet" href="main.css"/>
-</head>
-<body>
-<div id="main" data-init>
-    <div id="road-container">
-        <div class="card check-point" data-position="15">
-            <img class="card-img-top" src="img/finish.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">Về đích</div></div>
-        </div>
-        <!--            stage 3-->
-        <div class="card" data-position="14">
-            <img class="card-img-top" src="img/hagiang.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">Hà Giang</div></div>
-        </div>
-        <div class="card" data-position="13">
-            <img class="card-img-top" src="img/dalat.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">Đà Lạt</div></div>
-        </div>
-        <div class="card" data-position="12">
-            <img class="card-img-top" src="img/hcm.png" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">TP. HCM</div></div>
-        </div>
-        <div class="card" data-position="11">
-            <img class="card-img-top" src="img/hanoi.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">Hà Nội</div></div>
-        </div>
-        <div class="card check-point" data-position="10">
-            <img class="card-img-top" src="img/loan.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">Vay trả góp</div></div>
-        </div>
-        <!--            stage 2-->
-        <div class="card" data-position="9">
-            <img class="card-img-top" src="img/money_2.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">800 triệu</div></div>
-        </div>
-        <div class="card" data-position="8">
-            <img class="card-img-top" src="img/money_2.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">700 triệu</div></div>
-        </div>
-        <div class="card" data-position="7">
-            <img class="card-img-top" src="img/money_2.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">600 triệu</div></div>
-        </div>
-        <div class="card" data-position="6">
-            <img class="card-img-top" src="img/money_2.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">500 triệu</div></div>
-        </div>
-        <div class="card check-point" data-position="5">
-            <img class="card-img-top" src="img/interest_rate.png" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">Lãi gửi hàng tháng</div></div>
-        </div>
-        <!--            stage 1-->
-        <div class="card" data-position="4">
-            <img class="card-img-top" src="img/money.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">400 triệu</div></div>
-        </div>
-        <div class="card" data-position="3">
-            <img class="card-img-top" src="img/money.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">300 triệu</div></div>
-        </div>
-        <div class="card" data-position="2">
-            <img class="card-img-top" src="img/money.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">200 triệu</div></div>
-        </div>
-        <div class="card" data-position="1">
-            <img class="card-img-top" src="img/money.jpg" alt="Card image cap">
-            <div class="card-body"><div class="cell-content">100 triệu</div></div>
-        </div>
-        <div class="card check-point" data-position="0">
-            <img class="card-img-top" src="img/start.png" alt="Card image cap">
-            <h5 class="title-in-img">Xuất phát</h5>
-            <div class="card-body"><div class="cell-content">Lãi kép</div></div>
-        </div>
-    </div>
-    <div id="teams-container">
-        <div class="team" data-team="1">1</div>
-        <div class="team" data-team="2">2</div>
-        <div class="team" data-team="3">3</div>
-        <div class="team" data-team="4">4</div>
-    </div>
-    <div id="center-container">
-        <div id="question"><img src="img/empty.bmp" alt="question-content"></div>
-        <div id="response">
-            <button class="btn btn-info" onclick="showAnswer()">Đáp án</button>
-            <button class="btn btn-success" onclick="response(true)">Chính xác</button>
-            <button class="btn btn-danger" onclick="response(false)">Sai rồi</button>
-        </div>
-        <div id="answer"><img src="img/empty.bmp" alt="answer-content"></div>
-    </div>
-    <div id="right-panel">
-        <div id="status-container">
-            <div>Tổ 1: <span data-team="1">0</span> VNĐ</div>
-            <div>Tổ 2: <span data-team="2">0</span> VNĐ</div>
-            <div>Tổ 3: <span data-team="3">0</span> VNĐ</div>
-            <div>Tổ 4: <span data-team="4">0</span> VNĐ</div>
-        </div>
-        <div id="current-team-container">
-            Lượt chơi của tổ <span id="current-team">1</span>
-        </div>
-        <div id="dice-container">
-            <button id="roll-dice" class="btn btn-primary" onclick="rollDice()">Tung xúc xắc</button>
-            <div id="dice"></div>
-        </div>
-        <div id="form-container"><img src="img/empty.bmp" alt="form-content"></div>
-    </div>
-</div>
-<div id="clock" class="d-none">0</div>
-
-<script src="lib/jquery.min.js"></script>
-
-<script src="main.js"></script>
-</body>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Ladder to the Heaven - Game Tính Lãi Suất</title>
+    <meta name="description" content="Educational game about compound interest and financial literacy" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

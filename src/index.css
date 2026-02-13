@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/* Custom CSS Variables */
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --glass-dark: rgba(0, 0, 0, 0.4);
+  --glass-light: rgba(255, 255, 255, 0.1);
+  --glow-primary: rgba(139, 92, 246, 0.5);
+  --glow-secondary: rgba(59, 130, 246, 0.5);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/* Global Styles */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: var(--glass-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glow Effects */
+.glow-primary {
+  box-shadow: 0 0 20px var(--glow-primary), 0 0 40px var(--glow-primary);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px var(--glow-secondary), 0 0 40px var(--glow-secondary);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--glow-primary), 0 0 40px var(--glow-primary);
+  }
+
+  50% {
+    box-shadow: 0 0 30px var(--glow-primary), 0 0 60px var(--glow-primary);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Scrollbar Handling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

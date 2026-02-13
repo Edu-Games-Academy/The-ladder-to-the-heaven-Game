@@ -1,0 +1,28 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# testing
+/coverage
+
+# production
+/dist
+/build
+
+# misc
+.DS_Store
+*.pem
+*.local
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env*
+
+# tsbuildinfo
+*.tsbuildinfo
