@@ -1,9 +1,11 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { LADDER_POSITIONS } from '@/data/ladderPositions';
-import { TeamState } from '@/hooks/useGameState';
-import { TEAM_COLORS } from '@/data/gameConfig';
+import { TeamState, LadderPosition } from '@/types/game';
+import ladderData from '@/data/ladderPositions.json';
+import gameSettings from '@/data/gameSettings.json';
+
+const LADDER_POSITIONS = ladderData as LadderPosition[];
 import { getAssetPath } from '@/utils/assetPath';
 
 interface LadderProps {
@@ -70,7 +72,7 @@ export default function Ladder({ teams, currentTeam }: LadderProps) {
                                             key={idx}
                                             className="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center font-black text-[10px] shadow-xl"
                                             style={{
-                                                backgroundColor: TEAM_COLORS[idx].bg,
+                                                backgroundColor: gameSettings.teamColors[idx].bg,
                                                 color: 'white',
                                                 textShadow: '0 1px 2px rgba(0,0,0,0.5)'
                                             }}

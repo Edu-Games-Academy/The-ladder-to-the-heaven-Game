@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TEAM_COLORS } from '@/data/gameConfig';
-import { TeamState } from '@/hooks/useGameState';
+import gameSettings from '@/data/gameSettings.json';
+import { TeamState } from '@/types/game';
 
 interface ScoreboardProps {
     teams: TeamState[];
@@ -24,8 +24,7 @@ export default function Scoreboard({ teams, currentTeam }: ScoreboardProps) {
                 {teams.map((team, idx) => (
                     <motion.div
                         key={idx}
-                        className={`rounded-xl p-2.5 border transition-all duration-300 ${
-                            idx === currentTeam
+                        className={`rounded-xl p-2.5 border transition-all duration-300 ${idx === currentTeam
                             ? 'bg-white/15 border-yellow-400 shadow-[0_0_15px_rgba(250,204,21,0.3)] scale-[1.02]'
                             : 'border-white/10 opacity-80'
                             }`}
@@ -38,8 +37,8 @@ export default function Scoreboard({ teams, currentTeam }: ScoreboardProps) {
                             <div
                                 className="w-10 h-10 rounded-full border-2 flex items-center justify-center font-black text-lg shadow-lg shrink-0"
                                 style={{
-                                    backgroundColor: TEAM_COLORS[idx].bg,
-                                    borderColor: TEAM_COLORS[idx].border,
+                                    backgroundColor: gameSettings.teamColors[idx].bg,
+                                    borderColor: gameSettings.teamColors[idx].border,
                                     color: 'white',
                                     textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                                 }}
@@ -50,7 +49,7 @@ export default function Scoreboard({ teams, currentTeam }: ScoreboardProps) {
                             {/* Team Info Container - Using max-width to keep content closer */}
                             <div className="flex-grow flex items-center justify-between max-w-[280px]">
                                 <span className="font-bold text-lg text-white/90 truncate max-w-[100px]">
-                                    {TEAM_COLORS[idx].name}
+                                    {gameSettings.teamColors[idx].name}
                                 </span>
 
                                 <div className="text-right">

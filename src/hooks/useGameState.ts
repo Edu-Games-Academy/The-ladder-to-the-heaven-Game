@@ -1,34 +1,20 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { PRICES, TIMER_DURATIONS, MAX_STAGES, INITIAL_MONEY, NUM_TEAMS, DICE_MIN, DICE_MAX } from '@/data/gameConfig';
+import { GameState, LadderPosition } from '@/types/game';
+import ladderData from '@/data/ladderPositions.json';
+import gameSettings from '@/data/gameSettings.json';
 import questionsData from '@/data/questions.json';
 import stagesData from '@/data/stages.json';
 
-export type GamePhase = 'idle' | 'rolling' | 'answering' | 'showing-answer' | 'ended';
-
-export interface TeamState {
-  position: number;
-  money: number;
-}
-
-export interface GameState {
-  currentTeam: number;
-  currentQuestion: number;
-  currentStage: number;
-  teams: TeamState[];
-  phase: GamePhase;
-  diceValue: number | null;
-  timerValue: number;
-  showAnswer: boolean;
-}
+const LADDER_POSITIONS = ladderData as LadderPosition[];
 
 export function useGameState() {
   const [gameState, setGameState] = useState<GameState>({
     currentTeam: 0,
     currentQuestion: 0,
     currentStage: 0,
-    teams: Array(NUM_TEAMS).fill(null).map(() => ({
+    teams: Array(gameSettings.numTeams).fill(null).map(() => ({
       position: 0,
-      money: INITIAL_MONEY,
+      money: gameSettings.initialMoney,
     })),
     phase: 'idle',
     diceValue: null,
@@ -62,7 +48,7 @@ export function useGameState() {
   const moveToNextRound = useCallback((state: GameState): GameState => {
     const nextStage = state.currentStage + 1;
 
-    if (nextStage > MAX_STAGES) {
+    if (nextStage > stagesData.length) {
       return { ...state, phase: 'ended', showAnswer: false };
     }
 
@@ -86,7 +72,7 @@ export function useGameState() {
   // Move to next player
   const nextPlayer = useCallback(() => {
     setGameState(prev => {
-      const nextTeam = (prev.currentTeam + 1) % NUM_TEAMS;
+      const nextTeam = (prev.currentTeam + 1) % gameSettings.numTeams;
       const finishedRound = nextTeam === 0;
 
       if (finishedRound) {
@@ -107,7 +93,8 @@ export function useGameState() {
   const rollDice = useCallback(() => {
     if (gameState.phase !== 'idle') return;
 
-    const value = Math.floor(Math.random() * (DICE_MAX - DICE_MIN + 1)) + DICE_MIN;
+    const { min, max } = gameSettings.diceRange;
+    const value = Math.floor(Math.random() * (max - min + 1)) + min;
 
     setGameState(prev => ({
       ...prev,
@@ -132,7 +119,7 @@ export function useGameState() {
           ...prev,
           currentQuestion: prev.currentQuestion + 1,
           phase: 'answering',
-          timerValue: TIMER_DURATIONS[prev.currentStage - 1] || 0,
+          timerValue: stagesData[prev.currentStage - 1]?.timerDuration || 0,
         }));
       }, 500 * value + 300);
     }, 100);
@@ -142,13 +129,13 @@ export function useGameState() {
   const applyPriceEffect = useCallback((isCorrect: boolean) => {
     setGameState(prev => {
       const currentTeamState = prev.teams[prev.currentTeam];
-      const price = PRICES[currentTeamState.position];
+      const ladderPos = LADDER_POSITIONS[currentTeamState.position];
 
-      if (!price || (!price.correct && !price.incorrect)) {
+      if (!ladderPos || !ladderPos.rewards) {
         return prev;
       }
 
-      const effect = isCorrect ? price.correct : price.incorrect;
+      const effect = isCorrect ? ladderPos.rewards.correct : ladderPos.rewards.incorrect;
       if (effect === undefined) return prev;
 
       let newMoney = currentTeamState.money;

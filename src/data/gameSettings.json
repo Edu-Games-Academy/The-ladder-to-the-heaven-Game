@@ -1,0 +1,30 @@
+{
+    "initialMoney": 100000000,
+    "numTeams": 4,
+    "diceRange": {
+        "min": 1,
+        "max": 4
+    },
+    "teamColors": [
+        {
+            "bg": "#EA4335",
+            "border": "#EA4335",
+            "name": "Tổ 1"
+        },
+        {
+            "bg": "#FBBC05",
+            "border": "#FBBC05",
+            "name": "Tổ 2"
+        },
+        {
+            "bg": "#34A853",
+            "border": "#34A853",
+            "name": "Tổ 3"
+        },
+        {
+            "bg": "#4285F4",
+            "border": "#4285F4",
+            "name": "Tổ 4"
+        }
+    ]
+}

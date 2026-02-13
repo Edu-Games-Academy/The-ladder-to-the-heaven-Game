@@ -1,0 +1,162 @@
+[
+    {
+        "position": 0,
+        "label": "Lãi kép",
+        "image": "/images/ladder/start.png",
+        "isCheckpoint": true,
+        "rewards": {
+            "correct": 0,
+            "incorrect": 1
+        }
+    },
+    {
+        "position": 1,
+        "label": "100 triệu",
+        "image": "/images/ladder/money.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 100000000,
+            "incorrect": 0.5
+        }
+    },
+    {
+        "position": 2,
+        "label": "200 triệu",
+        "image": "/images/ladder/money.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 200000000,
+            "incorrect": 0.5
+        }
+    },
+    {
+        "position": 3,
+        "label": "300 triệu",
+        "image": "/images/ladder/money.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 300000000,
+            "incorrect": 0.5
+        }
+    },
+    {
+        "position": 4,
+        "label": "400 triệu",
+        "image": "/images/ladder/money.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 400000000,
+            "incorrect": 0.5
+        }
+    },
+    {
+        "position": 5,
+        "label": "Lãi gửi hàng tháng",
+        "image": "/images/ladder/interest_rate.png",
+        "isCheckpoint": true,
+        "rewards": {
+            "correct": 0,
+            "incorrect": 1
+        }
+    },
+    {
+        "position": 6,
+        "label": "500 triệu",
+        "image": "/images/ladder/money_2.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 500000000,
+            "incorrect": 0.25
+        }
+    },
+    {
+        "position": 7,
+        "label": "600 triệu",
+        "image": "/images/ladder/money_2.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 600000000,
+            "incorrect": 0.25
+        }
+    },
+    {
+        "position": 8,
+        "label": "700 triệu",
+        "image": "/images/ladder/money_2.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 700000000,
+            "incorrect": 0.25
+        }
+    },
+    {
+        "position": 9,
+        "label": "800 triệu",
+        "image": "/images/ladder/money_2.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 800000000,
+            "incorrect": 0.25
+        }
+    },
+    {
+        "position": 10,
+        "label": "Vay trả góp",
+        "image": "/images/ladder/loan.jpg",
+        "isCheckpoint": true,
+        "rewards": {
+            "correct": 0,
+            "incorrect": 1
+        }
+    },
+    {
+        "position": 11,
+        "label": "Hà Nội",
+        "image": "/images/ladder/hanoi.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 2000000000,
+            "incorrect": -2000000000
+        }
+    },
+    {
+        "position": 12,
+        "label": "TP. HCM",
+        "image": "/images/ladder/hcm.png",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 2200000000,
+            "incorrect": -2200000000
+        }
+    },
+    {
+        "position": 13,
+        "label": "Đà Lạt",
+        "image": "/images/ladder/dalat.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 1800000000,
+            "incorrect": -1800000000
+        }
+    },
+    {
+        "position": 14,
+        "label": "Hà Giang",
+        "image": "/images/ladder/hagiang.jpg",
+        "isCheckpoint": false,
+        "rewards": {
+            "correct": 2400000000,
+            "incorrect": -2400000000
+        }
+    },
+    {
+        "position": 15,
+        "label": "Về đích",
+        "image": "/images/ladder/finish.jpg",
+        "isCheckpoint": true,
+        "rewards": {
+            "correct": 0,
+            "incorrect": 1
+        }
+    }
+]

@@ -3,8 +3,8 @@
 import React from 'react';
 import Scoreboard from './Scoreboard';
 import Timer from './Timer';
-import { TeamState } from '@/hooks/useGameState';
-import { TEAM_COLORS } from '@/data/gameConfig';
+import { TeamState } from '@/types/game';
+import gameSettings from '@/data/gameSettings.json';
 
 interface CommandCenterProps {
     teams: TeamState[];
@@ -34,11 +34,11 @@ export default function CommandCenter({
                         <div
                             className="w-8 h-8 rounded-full border-2 border-white/20 shadow-lg shrink-0"
                             style={{
-                                backgroundColor: TEAM_COLORS[currentTeam].bg,
+                                backgroundColor: gameSettings.teamColors[currentTeam].bg,
                             }}
                         />
                         <span className="text-3xl font-black text-white tracking-tight">
-                            {TEAM_COLORS[currentTeam].name}
+                            {gameSettings.teamColors[currentTeam].name}
                         </span>
                     </div>
                 </div>
