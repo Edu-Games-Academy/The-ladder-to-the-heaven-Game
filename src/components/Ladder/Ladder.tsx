@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { LADDER_POSITIONS } from '@/data/ladderPositions';
 import { TeamState } from '@/hooks/useGameState';
 import { TEAM_COLORS } from '@/data/gameConfig';
+import { getAssetPath } from '@/utils/assetPath';
 
 interface LadderProps {
     teams: TeamState[];
@@ -47,7 +48,7 @@ export default function Ladder({ teams, currentTeam }: LadderProps) {
                         >
                             <div className="relative h-28 w-full opacity-60 group-hover:opacity-100 transition-opacity">
                                 <img
-                                    src={pos.image}
+                                    src={getAssetPath(pos.image)}
                                     alt={pos.label}
                                     className="object-cover w-full h-full"
                                 />

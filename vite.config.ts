@@ -4,6 +4,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: '/The-ladder-to-the-heaven-Game/',
     plugins: [react()],
     resolve: {
         alias: {

@@ -13,6 +13,10 @@ interface ContentRendererProps {
 
 const ContentRenderer = React.memo(function ContentRenderer({ content, compact = false }: ContentRendererProps) {
     const containerRef = useRef<HTMLDivElement>(null);
+
+    // Resolve internal image paths for GitHub Pages subpath
+    const resolvedContent = content.replace(/src="\/images\//g, `src="${import.meta.env.BASE_URL}images/`);
+
     useEffect(() => {
         if (containerRef.current) {
             // Render Math auto
@@ -26,7 +30,7 @@ const ContentRenderer = React.memo(function ContentRenderer({ content, compact =
                 throwOnError: false,
             });
         }
-    }, [content]);
+    }, [resolvedContent]);
 
     return (
         <motion.div
@@ -36,9 +40,9 @@ const ContentRenderer = React.memo(function ContentRenderer({ content, compact =
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div 
+            <div
                 className="content-html"
-                dangerouslySetInnerHTML={{ __html: content }} 
+                dangerouslySetInnerHTML={{ __html: resolvedContent }}
             />
         </motion.div>
     );

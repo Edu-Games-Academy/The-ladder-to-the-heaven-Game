@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ContentRenderer from './ContentRenderer';
+import { getAssetPath } from '@/utils/assetPath';
 
 interface QuestionData {
   id: number;
@@ -75,7 +76,7 @@ export default function QuestionArea({
             >
               <div className="relative w-28 h-28 bg-white rounded-2xl p-1 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)]">
                 <img
-                  src={`/images/dice/dice_${diceValue}.svg`}
+                  src={getAssetPath(`/images/dice/dice_${diceValue}.svg`)}
                   alt={`Dice ${diceValue}`}
                   className="object-contain w-full h-full"
                 />
